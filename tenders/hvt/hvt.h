@@ -89,6 +89,12 @@ inline void *hvt_checked_gpa_p(struct hvt *hvt, hvt_gpa_t gpa, size_t sz,
 struct hvt *hvt_init(size_t mem_size);
 
 /*
+ * Free hvt-related memory allocations. Should right at the end of the  
+ * execution.
+ */
+void hvt_deinit(struct hvt *hvt);
+
+/*
  * Computes the memory size to use for this tender, based on the user-provided
  * value (rounding down if necessary).
  */

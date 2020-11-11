@@ -143,6 +143,7 @@ int main(int argc, char **argv)
     const char *elf_filename;
     int elf_fd = -1;
     int matched;
+    int ret = -1;
 
     prog = basename(*argv);
     argc--;
@@ -275,5 +276,11 @@ int main(int argc, char **argv)
     warnx("WARNING: This is not recommended for production use.");
 #endif
 
-    return hvt_vcpu_loop(hvt);
+    ret = hvt_vcpu_loop(hvt);
+
+    /* cleanup mallocs / callocs */
+    free(mft);
+    hvt_deinit(hvt);
+
+    return ret;
 }

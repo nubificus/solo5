@@ -95,6 +95,15 @@ struct hvt *hvt_init(size_t mem_size)
     return hvt;
 }
 
+void hvt_deinit(struct hvt *hvt)
+{
+	assert(hvt->b);
+	free(hvt->b);
+
+	assert(hvt);
+	free(hvt);
+}
+
 #if HVT_DROP_PRIVILEGES
 void hvt_drop_privileges()
 {
