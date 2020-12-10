@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install prereqs
-      run: apt-get update && apt-get install -y libseccomp-dev
+      run: sudo apt-get update && apt-get install -y libseccomp-dev
     - name: configure
       run: ./configure.sh
     - name: make
