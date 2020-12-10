@@ -17,5 +17,5 @@ jobs:
       run: ./configure.sh
     - name: make
       run: make -j $(nprocs)
-    - name: ./tests/run_tests.sh
-      run: ./tests/run_tests.sh
+    - name: run tests
+      run: ./tests/run-tests.sh
