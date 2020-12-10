@@ -1,0 +1,21 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master, action_test_self_hosted ]
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: install prereqs
+      run: apt-get update && apt-get install -y libseccomp-dev
+    - name: configure
+      run: ./configure.sh
+    - name: make
+      run: make -j $(nprocs)
+    - name: ./tests/run_tests.sh
+      run: ./tests/run_tests.sh
